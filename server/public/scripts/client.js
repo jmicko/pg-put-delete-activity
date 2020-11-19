@@ -56,6 +56,8 @@ function renderBooks(books) {
     // For each book, append a new row to our table
     let $tr = $('<tr></tr>');
     $tr.data('book', book);
+    $tr.append(`<td><button class="btn-delete">Delete</button></td>`);
+    $tr.append(`<td><button class="btn-read">Mark as read</button></td>`);
     $tr.append(`<td>${book.title}</td>`);
     $tr.append(`<td>${book.author}</td>`);
     $('#bookShelf').append($tr);
