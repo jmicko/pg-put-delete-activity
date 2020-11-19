@@ -14,6 +14,18 @@ function addClickHandlers() {
 
 function deleteBook() {
   console.log('deleting a book');
+  let book = $(this).closest('tr').data('book');
+    console.log('book is selected as', book);
+    $(this.closest('tr')).empty();
+    $.ajax({
+        type: 'DELETE',
+        url: `/books/${book.id}`
+    }).then(function (response) {
+      refreshBooks()
+    }).catch(function(error) {
+      console.log('Error in POST', error)
+      alert('Unable to delete book at this time. Please try again later.');
+    });
 }
 
 function readBook() {
