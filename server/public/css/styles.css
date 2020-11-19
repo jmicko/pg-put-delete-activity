@@ -9,6 +9,16 @@ header {
   margin-bottom: 1em;
 }
 
+.unread{
+  background-color: rgb(54, 158, 115);
+  border-radius: .2rem;
+}
+
+.read{
+  background-color: rgb(241, 194, 139);
+  border-radius: .2rem;
+}
+
 h1 {
   margin: 0;
 }

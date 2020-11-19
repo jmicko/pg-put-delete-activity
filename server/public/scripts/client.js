@@ -94,9 +94,9 @@ function renderBooks(books) {
     $tr.data('book', book);
     $tr.append(`<td><button class="btn-delete">Delete</button></td>`);
     if (book.status === 'Want to Read') {
-      $tr.append(`<td><button class="btn-read">Mark as read</button></td>`);
+      $tr.append(`<td><button class="btn-read read">Mark as read</button></td>`);
     } else {
-      $tr.append(`<td><button class="btn-read">Mark as unread</button></td>`);
+      $tr.append(`<td><button class="btn-read unread">Mark as unread</button></td>`);
     }
     $tr.append(`<td>${book.title}</td>`);
     $tr.append(`<td>${book.author}</td>`);
