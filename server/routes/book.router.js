@@ -41,12 +41,22 @@ router.post('/',  (req, res) => {
 router.put('/:id',  (req, res) => {
   let book = req.body; // Book with updated content
   let id = req.params.id; // id of the book to update
-
-  console.log(`Updating book ${id} with `, book);
-
   // TODO - REPLACE BELOW WITH YOUR CODE
-  res.sendStatus(500);
-
+  console.log(`Updating book ${id} with `, book.status);
+  let sqlText = '';
+  if (book.status === 'Want to Read') {
+    sqlText = `UPDATE books SET status='Finished' WHERE id=$1;`
+  } else {
+    sqlText = `UPDATE books SET status='Want to Read' WHERE id=$1;`
+  }
+  pool.query(sqlText, [id])
+    .then((result) => {
+        res.sendStatus(200);
+    })
+    .catch( (error) => {
+        console.log('error from db', error);
+        res.sendStatus(500);
+    })
 });
 
 // TODO - DELETE 

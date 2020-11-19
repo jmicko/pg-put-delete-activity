@@ -30,6 +30,19 @@ function deleteBook() {
 
 function readBook() {
   console.log('read a book');
+  let book = $(this).closest('tr').data('book');
+  console.log(`changing status for ${book.title}...`);
+
+  $.ajax({
+    method: 'PUT',
+    url: `/books/${book.id}`,
+    data: {status: book.status}
+  }).then(function (response) {
+    refreshBooks();
+  }).catch( (error) => {
+    console.log('error from db', error);
+    res.sendStatus(500);
+  })
 }
 
 
@@ -82,6 +95,8 @@ function renderBooks(books) {
     $tr.append(`<td><button class="btn-delete">Delete</button></td>`);
     if (book.status === 'Want to Read') {
       $tr.append(`<td><button class="btn-read">Mark as read</button></td>`);
+    } else {
+      $tr.append(`<td><button class="btn-read">Mark as unread</button></td>`);
     }
     $tr.append(`<td>${book.title}</td>`);
     $tr.append(`<td>${book.author}</td>`);
