@@ -6,9 +6,20 @@ $(document).ready(function(){
 
 function addClickHandlers() {
   $('#submitBtn').on('click', handleSubmit);
-
+  $('#bookShelf').on('click', '.btn-delete', deleteBook)
+  // call the readBook function if they click the button that they have read the book
+  $('#bookShelf').on('click', '.btn-read', readBook)
   // TODO - Add code for edit & delete buttons
 }
+
+function deleteBook() {
+  console.log('deleting a book');
+}
+
+function readBook() {
+  console.log('read a book');
+}
+
 
 function handleSubmit() {
   console.log('Submit button clicked.');
