@@ -1,5 +1,6 @@
 const pg = require('pg');
 
+// Set up our pool
 const config = {
   database: 'awesome_reads', 
   host: 'localhost', 
@@ -18,4 +19,5 @@ pool.on("error", (err) => {
   console.log("error connecting to postgres", err);
 });
 
+// export pool to the ether
 module.exports = pool;

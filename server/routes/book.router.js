@@ -44,6 +44,7 @@ router.put('/:id',  (req, res) => {
   // TODO - REPLACE BELOW WITH YOUR CODE
   console.log(`Updating book ${id} with `, book.status);
   let sqlText = '';
+  // if statement checks book status, and changes it to the opposite
   if (book.status === 'Want to Read') {
     sqlText = `UPDATE books SET status='Finished' WHERE id=$1;`
   } else {
